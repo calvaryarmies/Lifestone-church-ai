@@ -130,14 +130,12 @@ export function DownloadButton({
             assets.find((a: any) => a.name?.endsWith(".deb")) ||
             assets.find((a: any) => a.name?.endsWith(".AppImage"));
         } else {
-          // Standard Windows
-          targetAsset =
-            assets.find(
-              (a: any) =>
-                !a.name?.toLowerCase().includes("lite") &&
-                (a.name?.endsWith("setup.exe") || a.name?.endsWith(".exe"))
-            ) ||
-            assets.find((a: any) => a.name?.endsWith("setup.exe"));
+          // Standard Windows (Full GPU/AI build ~330 MB — NEVER fall back to Lite!)
+          targetAsset = assets.find(
+            (a: any) =>
+              !a.name?.toLowerCase().includes("lite") &&
+              (a.name?.endsWith("setup.exe") || a.name?.endsWith(".exe"))
+          );
         }
 
         if (targetAsset?.browser_download_url) {
