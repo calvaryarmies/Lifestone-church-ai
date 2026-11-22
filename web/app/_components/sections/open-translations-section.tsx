@@ -3,7 +3,9 @@ import {
   IconExternalLink,
   IconShieldCheck,
 } from "@tabler/icons-react";
+import { Container } from "../ui/container";
 import { Reveal } from "../ui/reveal";
+import { SectionHeading } from "./section-heading";
 import { SITE } from "../../_lib/site";
 
 type TranslationCard = {
@@ -72,63 +74,53 @@ export function OpenTranslationsSection() {
     <section
       id="translations"
       aria-labelledby="translations-heading"
-      className="border-t border-border bg-background-elevated/35 py-20 lg:py-28"
+      className="py-20 lg:py-[120px]"
     >
-      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-12 px-5 sm:px-8 lg:px-10">
-        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-              Ethical &amp; Open Scripture
-            </span>
-            <h2
-              id="translations-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl lg:text-[44px]"
-            >
-              5 open-license Bible translations, stored offline in full.
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Public Lifestone releases bundle exclusively Public Domain and
-            publisher-authorized Scripture — honoring Bible societies while
-            guaranteeing 100% offline SQLite + FTS5 search across 4 languages.
-          </p>
+      <Container className="flex flex-col gap-10 md:gap-14">
+        <Reveal>
+          <SectionHeading
+            id="translations-heading"
+            subtitle="5 open and freely licensed Bible translations bundled in full for instant offline SQLite + FTS5 search across 4 languages."
+          >
+            Open-license Scripture, ready offline
+          </SectionHeading>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {PUBLIC_TRANSLATIONS.map((t) => (
-            <Reveal key={t.abbr}>
+        <div className="grid grid-cols-1 md:grid-cols-2 md:[&>*]:-ml-px md:[&>*]:-mt-px lg:grid-cols-3">
+          {PUBLIC_TRANSLATIONS.map((t, i) => (
+            <Reveal key={t.abbr} delay={(i % 3) * 80} className="flex">
               <article
                 className={
                   t.highlight
-                    ? "flex h-full flex-col justify-between rounded-[20px] border border-accent/40 bg-accent/[0.07] p-6 shadow-[0_14px_40px_rgba(228,180,76,0.08)]"
-                    : "flex h-full flex-col justify-between rounded-[20px] border border-border-strong bg-background-elevated p-6 transition-colors hover:border-accent/35"
+                    ? "flex h-full w-full flex-col justify-between gap-6 border border-accent-cyan/40 bg-accent-cyan/[0.06] p-8"
+                    : "flex h-full w-full flex-col justify-between gap-6 border border-border-strong bg-surface p-8"
                 }
               >
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/12 px-3 py-0.5 font-mono text-xs font-bold text-accent-gold">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-3 py-0.5 font-mono text-xs font-semibold text-accent-cyan">
                       <IconBook2 size={13} />
                       {t.abbr}
                     </span>
-                    <span className="font-mono text-[11px] text-subtle-foreground">
+                    <span className="font-mono text-xs text-subtle-foreground">
                       {t.language} · {t.verses}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-xl font-semibold text-foreground">
+                  <h3 className="text-xl font-medium tracking-[-0.02em] text-foreground">
                     {t.name}
                   </h3>
 
-                  <p className="text-sm italic leading-relaxed text-muted-foreground">
+                  <p className="text-[15px] italic leading-6 text-muted-foreground">
                     &ldquo;{t.sampleText}&rdquo;
                   </p>
                 </div>
 
-                <div className="mt-5 flex items-center justify-between gap-2 border-t border-border pt-4 text-xs">
+                <div className="flex items-center justify-between gap-2 border-t border-border pt-4 text-xs">
                   <span className="font-mono text-subtle-foreground">
                     {t.sampleRef}
                   </span>
-                  <span className="inline-flex items-center gap-1 font-medium text-accent-live">
+                  <span className="inline-flex items-center gap-1 font-medium text-emerald-400">
                     <IconShieldCheck size={14} />
                     {t.license}
                   </span>
@@ -137,25 +129,25 @@ export function OpenTranslationsSection() {
             </Reveal>
           ))}
 
-          {/* 6th Card: BibliaTodo Credit & Multilingual Vision */}
-          <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-[20px] border border-dashed border-border-strong bg-surface p-6">
+          {/* 6th Card: BibliaTodo Credit */}
+          <Reveal delay={160} className="flex">
+            <div className="flex h-full w-full flex-col justify-between gap-6 border border-border-strong bg-surface/60 p-8">
               <div className="flex flex-col gap-3">
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                <span className="font-mono text-xs uppercase tracking-wider text-accent-gold">
                   Scripture Attribution
                 </span>
-                <h3 className="font-display text-xl font-semibold text-foreground">
+                <h3 className="text-xl font-medium tracking-[-0.02em] text-foreground">
                   Faithful to every word &amp; license
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-[15px] leading-6 text-muted-foreground">
                   Spanish <strong className="text-foreground">NTBT</strong> is
-                  bundled untouched — preserving all original textual brackets
+                  bundled verbatim — preserving all original textual brackets
                   and release metadata under the{" "}
                   <a
                     href={SITE.attribution.bibliatodoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-0.5 text-accent-gold underline underline-offset-4 hover:text-accent"
+                    className="inline-flex items-center gap-1 text-accent-cyan underline underline-offset-4 hover:text-foreground"
                   >
                     {SITE.attribution.bibliatodoName}
                     <IconExternalLink size={12} />
@@ -163,14 +155,14 @@ export function OpenTranslationsSection() {
                   Free Use Agreement.
                 </p>
               </div>
-              <p className="mt-5 border-t border-border pt-4 text-xs text-subtle-foreground">
-                No unlicensed copyrighted Bible texts are distributed in public
-                Lifestone builds.
+              <p className="border-t border-border pt-4 text-xs text-subtle-foreground">
+                100% offline SQLite + FTS5 search with 344,799 openbible.info
+                cross-references.
               </p>
             </div>
           </Reveal>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

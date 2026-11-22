@@ -1,10 +1,10 @@
 import {
   IconMicrophone,
   IconBook,
-  IconBolt,
+  IconMusic,
   IconLanguage,
-  IconLock,
-  IconAdjustmentsHorizontal,
+  IconDeviceDesktop,
+  IconBroadcast,
 } from "@tabler/icons-react";
 import { Container } from "../ui/container";
 import { FeatureCard } from "../ui/feature-card";
@@ -22,33 +22,33 @@ type Feature = {
 const FEATURES: Feature[] = [
   {
     icon: IconMicrophone,
-    title: "Real-time transcription",
-    body: "Listen to sermons as they happen with high-accuracy voice recognition tailored for spoken ministry.",
+    title: "100% Offline Whisper AI",
+    body: "Transcribe live sermons locally with dual Whisper models (Base + Tiny) in under a second — zero internet drop-outs and zero API bills.",
   },
   {
     icon: IconBook,
-    title: "Scripture detection",
-    body: "Recognize explicit references and seamlessly identify quoted passages without manual entry.",
+    title: "Direct & Paraphrase Detection",
+    body: "Recognizes spoken English & Spanish citations (John 3:16, Juan 3:16) and paraphrased quotations via ONNX semantic search across 31,102 verses.",
   },
   {
-    icon: IconBolt,
-    title: "Instant overlays",
-    body: "Send Scripture directly into your broadcast workflow the moment it is detected in speech.",
+    icon: IconMusic,
+    title: "2,937 Built-in Church Hymns",
+    body: "Four classic hymnals (GHS, CAC YHB, Baptist Hymnal, Sankey SSFSS) bundled offline — search by number, title, or opening lyrics.",
   },
   {
     icon: IconLanguage,
-    title: "Multiple translations",
-    body: "Switch Bible translations seamlessly during the service to match the pastor's context.",
+    title: "5 Open-License Bible Translations",
+    body: "Offline SQLite + FTS5 search across KJV, Spanish NTBT (BibliaTodo), SpaRV, FreJND, and PorBLivre — plus 344,799 cross-references.",
   },
   {
-    icon: IconLock,
-    title: "Local-first processing",
-    body: "Run advanced AI speech recognition completely locally with Whisper when configured.",
+    icon: IconDeviceDesktop,
+    title: "Plug-and-Play HDMI Auto-Detect",
+    body: "Automatically detects your sanctuary projector the moment HDMI connects, prompts once, and launches a clean full-screen Verse Screen.",
   },
   {
-    icon: IconAdjustmentsHorizontal,
-    title: "Broadcast control",
-    body: "Designed for real production environments with HDMI projector flows and upcoming NDI support.",
+    icon: IconBroadcast,
+    title: "NDI, OBS, vMix & Remote Control",
+    body: "Send transparent broadcast overlays over NDI, customize typography in the Theme Designer, and drive services via voice commands or OSC/HTTP.",
   },
 ];
 
@@ -61,7 +61,10 @@ export function FeaturesSection() {
     >
       <Container className="flex flex-col gap-10 md:gap-14">
         <Reveal>
-          <SectionHeading id="features-heading">
+          <SectionHeading
+            id="features-heading"
+            subtitle="Everything a local church booth needs on Sunday morning — engineered to run offline on both modern GPU rigs and budget Pentium/Celeron laptops."
+          >
             Built for live ministry
           </SectionHeading>
         </Reveal>

@@ -3,8 +3,18 @@ import { Container } from "../ui/container";
 import { Reveal } from "../ui/reveal";
 import { SectionHeading } from "./section-heading";
 
-const WITHOUT = ["Manual verse typing", "Delays", "Missed references"];
-const WITH = ["Automatic detection", "Instant display", "Smooth live flow"];
+const WITHOUT = [
+  "Manual verse typing during fast preaching",
+  "Delays and missed paraphrased references",
+  "Fragile cloud subscriptions that break without Wi-Fi",
+  "Juggling separate Bible and hymnal apps",
+];
+const WITH = [
+  "Sub-second offline AI verse & paraphrase detection",
+  "5 open-license Bible translations & 2,937 hymns bundled offline",
+  "Plug-and-play HDMI auto-detect plus transparent NDI for OBS & vMix",
+  "Dedicated Standard (GPU/AI) & Lite (Pentium/Celeron) editions",
+];
 
 export function ComparisonSection() {
   return (
@@ -43,20 +53,19 @@ function ComparisonCard({
   tone: "positive" | "negative";
 }) {
   const Icon = tone === "positive" ? IconCircleCheck : IconCircleX;
-  const iconColor =
-    tone === "positive" ? "text-emerald-500" : "text-red-500";
+  const iconColor = tone === "positive" ? "text-emerald-400" : "text-red-400";
   return (
-    <div className="flex h-full w-full flex-col gap-2 border border-border-strong p-8 opacity-90">
+    <div className="flex h-full w-full flex-col gap-3 border border-border-strong p-8 opacity-95">
       <h3 className="text-lg font-medium leading-6 tracking-[-0.01em] text-foreground">
         {title}
       </h3>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex flex-col gap-2.5">
         {items.map((item) => (
           <li
             key={item}
-            className="flex items-center gap-1.5 text-[15px] leading-6 text-muted-foreground"
+            className="flex items-start gap-2 text-[15px] leading-6 text-muted-foreground"
           >
-            <span className={iconColor}>
+            <span className={`${iconColor} mt-1 shrink-0`}>
               <Icon size={16} aria-hidden stroke={2} />
             </span>
             <span>{item}</span>

@@ -1,4 +1,7 @@
+import { Container } from "../ui/container";
 import { Reveal } from "../ui/reveal";
+import { SectionHeading } from "./section-heading";
+import { cn } from "../../_lib/utils";
 import { FAQS } from "./faq-section.data";
 
 export function FaqSection() {
@@ -6,38 +9,32 @@ export function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="border-t border-border bg-background-elevated/35 py-20 lg:py-28"
+      className="py-20 lg:py-[128px]"
     >
-      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-12 px-5 sm:px-8 lg:px-10">
-        <Reveal className="max-w-2xl">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-            Common Questions
-          </span>
-          <h2
-            id="faq-heading"
-            className="mt-2 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl lg:text-[44px]"
-          >
-            Straight answers for church media teams.
-          </h2>
+      <Container className="flex flex-col gap-10 md:gap-14 lg:gap-[52px]">
+        <Reveal>
+          <SectionHeading id="faq-heading">Common questions</SectionHeading>
         </Reveal>
-
         <Reveal>
           <dl
-            className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2"
+            className="flex flex-col"
             itemScope
             itemType="https://schema.org/FAQPage"
           >
-            {FAQS.map((faq) => (
+            {FAQS.map((faq, i) => (
               <div
                 key={faq.question}
-                className="flex flex-col gap-2.5 border-t border-border pt-6"
+                className={cn(
+                  "flex flex-col gap-3 py-8",
+                  i > 0 && "border-t border-border-strong"
+                )}
                 itemScope
                 itemProp="mainEntity"
                 itemType="https://schema.org/Question"
               >
                 <dt
                   itemProp="name"
-                  className="font-display text-lg font-semibold leading-snug text-foreground sm:text-xl"
+                  className="text-xl font-medium leading-8 tracking-[-0.02em] text-foreground md:text-2xl md:tracking-[-0.04em]"
                 >
                   {faq.question}
                 </dt>
@@ -45,7 +42,7 @@ export function FaqSection() {
                   itemScope
                   itemProp="acceptedAnswer"
                   itemType="https://schema.org/Answer"
-                  className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]"
+                  className="text-[17px] leading-6 tracking-[-0.01em] text-muted-foreground"
                 >
                   <span itemProp="text">{faq.answer}</span>
                 </dd>
@@ -53,7 +50,7 @@ export function FaqSection() {
             ))}
           </dl>
         </Reveal>
-      </div>
+      </Container>
     </section>
   );
 }

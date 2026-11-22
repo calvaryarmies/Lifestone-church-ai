@@ -1,111 +1,98 @@
-import {
-  IconPlayerPlay,
-  IconShieldCheck,
-  IconWifiOff,
-  IconBrandGithub,
-} from "@tabler/icons-react";
+import { IconPlayerPlay } from "@tabler/icons-react";
 import { Button } from "../ui/button";
+import { Container } from "../ui/container";
 import { DownloadButton, WindowsCompatibilityNotice } from "../ui/download-button";
-import { SanctuaryStagePreview } from "../ui/sanctuary-stage-preview";
 import { SITE } from "../../_lib/site";
 
-export function HeroSection({ stars }: { stars: number }) {
+export function HeroSection({ stars: _stars }: { stars: number }) {
   return (
-    <section className="relative overflow-hidden border-b border-border pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-20 lg:pb-24">
-      {/* Subtle sanctuary grid + warm candlelit stone radial bloom */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 sanctuary-grid opacity-70 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_80%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 right-[-10%] h-[540px] w-[720px] rounded-full bg-[radial-gradient(circle,rgba(228,180,76,0.16)_0%,rgba(217,119,54,0.06)_40%,transparent_72%)] blur-3xl"
-      />
-
-      <div className="relative mx-auto grid w-full max-w-[1320px] grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-14 lg:px-10">
-        {/* Left: Editorial Sanctuary Pitch & Direct Download Actions */}
-        <div className="flex min-w-0 flex-col items-start gap-6">
-          {/* Edition Status Badge */}
-          <div className="inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-accent/30 bg-accent/[0.08] px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-accent-gold">
-            <span className="inline-flex items-center gap-1.5 font-mono font-semibold text-accent">
-              <span className="size-1.5 rounded-full bg-accent-live" />
-              v1.2.0
-            </span>
-            <span className="text-accent/40">•</span>
-            <span className="inline-flex items-center gap-1">
-              <IconWifiOff size={13} />
-              100% Offline AI
-            </span>
-            <span className="hidden xs:inline text-accent/40">•</span>
-            <span className="inline-flex items-center gap-1">
-              <IconShieldCheck size={13} />
-              Open-License Scripture
+    <section
+      id="top"
+      className="relative overflow-hidden"
+      aria-label="Lifestone introduction"
+    >
+      <HeroGlow />
+      <Container
+        as="div"
+        className="relative flex flex-col items-center gap-12 py-20 text-center md:py-32 lg:py-40"
+      >
+        <div className="flex flex-col items-center gap-3 mb-2">
+          <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-4 py-1.5 text-xs font-semibold text-accent-cyan shadow-sm">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-accent-cyan animate-pulse" />
+            <span className="text-balance">
+              NEW IN v1.2.0: Spanish NTBT Bible, 2,937 Offline Hymns &amp; HDMI Auto-Detect
             </span>
           </div>
-
-          <h1 className="font-display text-[36px] font-semibold leading-[1.06] tracking-[-0.03em] text-foreground sm:text-[52px] lg:text-[62px]">
-            Living Scripture,{" "}
-            <span className="bg-gradient-to-r from-accent-gold via-accent to-accent-amber bg-clip-text text-transparent">
-              Anchored
-            </span>{" "}
-            for Every Sanctuary.
+          <span className="text-accent-gold uppercase tracking-widest text-sm font-semibold">
+            {SITE.legalName}
+          </span>
+          <h1 className="text-balance font-medium tracking-[-0.035em] text-foreground text-[56px] leading-[1.05] sm:text-[72px] md:text-[84px] lg:text-[100px] lg:tracking-[-0.05em]">
+            LIFESTONE
           </h1>
+        </div>
 
-          <p className="max-w-[560px] text-[16px] leading-[1.65] text-muted-foreground sm:text-[18px]">
-            Lifestone listens to live sermons completely offline and projects
-            Bible verses the instant they&apos;re spoken — bundled with{" "}
-            <strong className="font-medium text-foreground">
-              5 open-license Bible translations
-            </strong>
-            ,{" "}
-            <strong className="font-medium text-foreground">
-              2,937 classic church hymns
-            </strong>
-            , and plug-and-play{" "}
-            <strong className="font-medium text-foreground">
-              HDMI &amp; NDI broadcast output
-            </strong>
-            .
+        <div className="flex max-w-[850px] flex-col items-center gap-6">
+          <p className="text-pretty font-medium text-xl leading-[1.45] text-accent-cyan sm:text-2xl md:text-3xl lg:text-4xl lg:leading-[1.2]">
+            {SITE.tagline}
           </p>
+          <p className="text-pretty text-base leading-[1.6] text-muted-foreground sm:text-lg md:text-xl lg:text-2xl lg:leading-8 max-w-3xl">
+            {SITE.shortDescription}
+          </p>
+        </div>
 
-          {/* Primary Action Row */}
-          <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center pt-1">
-            <DownloadButton size="lg" className="justify-center" />
+        <div className="flex flex-col items-center gap-5 mt-4 w-full max-w-2xl">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <DownloadButton size="lg" className="px-8 text-lg h-14" />
             <Button
               href="#demo"
               variant="secondary"
               size="lg"
-              className="justify-center"
+              className="px-8 text-lg h-14 bg-surface hover:bg-surface-strong border border-border-strong text-foreground transition-all duration-300"
             >
-              <IconPlayerPlay size={16} aria-hidden stroke={2} />
-              <span>Watch live demo</span>
+              <IconPlayerPlay size={20} aria-hidden stroke={2} />
+              <span>Watch it in action</span>
             </Button>
           </div>
+          <WindowsCompatibilityNotice />
+          <p className="text-[15px] leading-6 text-muted-foreground mt-2">
+            Available for Windows (Standard ~330 MB &amp; Lite ~114 MB) and macOS • 100% Offline &amp; Free
+          </p>
+        </div>
 
-          {/* Dedicated Budget PC / Lite Switcher Card */}
-          <WindowsCompatibilityNotice className="mt-1" />
-
-          {/* Trust & Open-Source Micro-footer */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-subtle-foreground">
-            <span>Standard GPU/AI (~330 MB) &amp; Lite (~114 MB)</span>
-            <span className="hidden sm:inline text-border-strong">•</span>
-            <a
-              href={SITE.repo.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent-gold transition-colors"
+        <div className="mt-16 animate-bounce">
+          <a
+            href="#demo"
+            aria-label="Scroll to live demo"
+            className="text-muted-foreground hover:text-accent-cyan transition-colors"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <IconBrandGithub size={14} />
-              <span>Free MIT Open Source ({stars} stars)</span>
-            </a>
-          </div>
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </a>
         </div>
-
-        {/* Right: Interactive Live Sanctuary Stage Preview */}
-        <div className="min-w-0 w-full">
-          <SanctuaryStagePreview />
-        </div>
-      </div>
+      </Container>
     </section>
+  );
+}
+
+function HeroGlow() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 -top-24 mx-auto h-[700px] w-full max-w-[1440px] opacity-70"
+      style={{
+        background:
+          "radial-gradient(60% 50% at 50% 0%, rgba(25, 215, 255, 0.15) 0%, rgba(22, 119, 255, 0.08) 30%, transparent 70%)",
+      }}
+    />
   );
 }

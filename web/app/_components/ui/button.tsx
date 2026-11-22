@@ -25,20 +25,18 @@ type AsLink = Common &
 type ButtonProps = AsButton | AsLink;
 
 const base =
-  "inline-flex items-center justify-center gap-2.5 rounded-full whitespace-nowrap font-semibold tracking-[-0.01em] transition-all duration-200 ease-out will-change-transform hover:-translate-y-[1px] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60 cursor-pointer";
+  "inline-flex items-center justify-center gap-[10px] rounded-full whitespace-nowrap font-medium tracking-[-0.3px] transition-colors transition-transform duration-200 ease-out will-change-transform hover:-translate-y-[1px] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60 cursor-pointer";
 
 const sizes: Record<Size, string> = {
-  md: "px-4 py-2 text-[14px] leading-5",
-  lg: "px-6 py-3 text-[15px] leading-6",
+  md: "px-[14px] py-[6px] text-[15px] leading-6",
+  lg: "px-4 py-[6px] text-[18px] leading-6",
 };
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-accent text-primary-foreground shadow-[0_8px_28px_rgba(228,180,76,0.26)] hover:bg-accent-gold hover:shadow-[0_10px_34px_rgba(228,180,76,0.36)]",
-  secondary:
-    "border border-border-strong bg-surface-strong text-foreground hover:border-accent/40 hover:bg-white/[0.12]",
+  primary: "bg-primary text-primary-foreground hover:bg-white/90",
+  secondary: "bg-surface-strong text-foreground hover:bg-white/25",
   ghost:
-    "border border-border-strong bg-transparent text-foreground/90 hover:border-accent/40 hover:bg-accent/10 hover:text-accent-gold",
+    "border border-border-strong bg-transparent text-foreground hover:bg-white/5",
 };
 
 export function Button({

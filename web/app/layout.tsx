@@ -1,28 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import "./globals.css";
 import { SITE } from "./_lib/site";
 import { StructuredData } from "./_components/seo/structured-data";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["SOFT", "WONK"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
 
 const TITLE = `${SITE.name} — ${SITE.tagline}`;
 const OG_TITLE = TITLE;
@@ -39,17 +19,17 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   keywords: [
     "Lifestone",
-    "church presentation software",
-    "offline Bible projection",
-    "AI Bible verse detection",
+    "Bible verse detection",
     "real-time scripture overlay",
+    "offline church presentation software",
+    "sermon transcription",
     "church hymnal software",
     "HDMI church projector",
-    "NDI scripture overlay",
+    "NDI overlay",
     "OBS scripture overlay",
     "vMix scripture overlay",
     "Spanish NTBT Bible software",
-    "free open source church media",
+    "speech-to-scripture",
   ],
   authors: [{ name: SITE.legalName, url: SITE.repo.url }],
   creator: SITE.legalName,
@@ -93,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0A09",
+  themeColor: "#07111F",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -105,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark h-full antialiased ${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
+      className="dark h-full antialiased"
       data-theme="dark"
       suppressHydrationWarning
     >

@@ -3,32 +3,57 @@
 @import "fumadocs-ui/css/preset.css";
 @source "../node_modules/fumadocs-ui/dist/**/*.js";
 
+@font-face {
+  font-family: "GT Walsheim Pro";
+  src: local("GT Walsheim Pro Regular"),
+    url("/fonts/GTWalsheimProRegular.woff2") format("woff2"),
+    url("/fonts/GTWalsheimProRegular.woff") format("woff"),
+    url("/fonts/GTWalsheimProRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim Pro";
+  src: local("GT Walsheim Pro Medium"),
+    url("/fonts/GTWalsheimProMedium.woff2") format("woff2"),
+    url("/fonts/GTWalsheimProMedium.woff") format("woff"),
+    url("/fonts/GTWalsheimProMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim Pro";
+  src: local("GT Walsheim Pro Bold"),
+    url("/fonts/GTWalsheimProBold.woff2") format("woff2"),
+    url("/fonts/GTWalsheimProBold.woff") format("woff"),
+    url("/fonts/GTWalsheimProBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Lifestone Warm Living-Stone & Sanctuary Gold Palette */
-  --background: #0b0a09;
-  --background-elevated: #141210;
-  --foreground: #f5efe6;
-  --muted-foreground: rgba(245, 239, 230, 0.66);
-  --subtle-foreground: rgba(245, 239, 230, 0.44);
-  --border: rgba(245, 239, 230, 0.09);
-  --border-strong: rgba(245, 239, 230, 0.16);
-  --surface: rgba(245, 239, 230, 0.035);
-  --surface-strong: rgba(245, 239, 230, 0.085);
-
-  /* Sanctuary Gold & Broadcast Signal Accents */
-  --accent: #e4b44c;
-  --accent-gold: #f3d382;
-  --accent-amber: #d97736;
-  --accent-cyan: #67b7dc;
-  --accent-live: #34d399;
-
-  --primary: #e4b44c;
-  --primary-foreground: #120e08;
+  --background: #07111F;
+  --foreground: #F7FAFF;
+  --muted-foreground: rgba(247, 250, 255, 0.62);
+  --subtle-foreground: rgba(247, 250, 255, 0.42);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.12);
+  --accent: #1677FF;
+  --accent-cyan: #19D7FF;
+  --accent-gold: #F4C95D;
+  --primary: #F7FAFF;
+  --primary-foreground: #07111F;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-background-elevated: var(--background-elevated);
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);
   --color-subtle-foreground: var(--subtle-foreground);
@@ -37,18 +62,12 @@
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
   --color-accent: var(--accent);
-  --color-accent-gold: var(--accent-gold);
-  --color-accent-amber: var(--accent-amber);
   --color-accent-cyan: var(--accent-cyan);
-  --color-accent-live: var(--accent-live);
+  --color-accent-gold: var(--accent-gold);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: "GT Walsheim Pro", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo,
-    Monaco, Consolas, monospace;
 }
 
 html {
@@ -59,7 +78,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -72,38 +91,6 @@ body {
 ::selection {
   background: var(--accent);
   color: var(--primary-foreground);
-}
-
-/* Subtle architectural stone grid backdrop */
-.sanctuary-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(245, 239, 230, 0.032) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(245, 239, 230, 0.032) 1px,
-      transparent 1px
-    );
-  background-size: 64px 64px;
-}
-
-/* Soft sanctuary halo animation for live preview stage */
-@keyframes sanctuaryPulse {
-  0%,
-  100% {
-    opacity: 0.48;
-    transform: scale(0.98);
-  }
-  50% {
-    opacity: 0.82;
-    transform: scale(1.03);
-  }
-}
-
-.animate-sanctuary-pulse {
-  animation: sanctuaryPulse 6.5s ease-in-out infinite;
 }
 
 html.lenis,
@@ -125,9 +112,9 @@ html.lenis body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -143,10 +130,6 @@ html.lenis body {
     transition: none;
   }
 
-  .animate-sanctuary-pulse {
-    animation: none;
-  }
-
   *,
   *::before,
   *::after {
@@ -158,30 +141,30 @@ html.lenis body {
 }
 
 /*
- * Fumadocs theme aligned with Lifestone's warm obsidian stone & sanctuary gold palette.
+ * Fumadocs theme aligned with Lifestone's deep midnight sapphire & electric blue brand.
  */
 .dark {
-  --color-fd-background: 30 10% 5%;
-  --color-fd-foreground: 35 38% 93%;
-  --color-fd-muted: 30 10% 11%;
-  --color-fd-muted-foreground: 35 20% 66%;
-  --color-fd-popover: 30 10% 7%;
-  --color-fd-popover-foreground: 35 38% 93%;
-  --color-fd-card: 30 10% 8%;
-  --color-fd-card-foreground: 35 38% 93%;
-  --color-fd-border: 35 14% 16%;
-  --color-fd-primary: 41 74% 60%;
-  --color-fd-primary-foreground: 34 38% 6%;
-  --color-fd-secondary: 30 10% 12%;
-  --color-fd-secondary-foreground: 35 38% 93%;
-  --color-fd-accent: 35 18% 15%;
-  --color-fd-accent-foreground: 35 38% 93%;
-  --color-fd-ring: 41 74% 60%;
+  --color-fd-background: 215 63% 8%;
+  --color-fd-foreground: 216 100% 98%;
+  --color-fd-muted: 215 63% 14%;
+  --color-fd-muted-foreground: 216 100% 60%;
+  --color-fd-popover: 215 63% 10%;
+  --color-fd-popover-foreground: 216 100% 98%;
+  --color-fd-card: 215 63% 10%;
+  --color-fd-card-foreground: 216 100% 98%;
+  --color-fd-border: 215 63% 18%;
+  --color-fd-primary: 215 100% 54%;
+  --color-fd-primary-foreground: 216 100% 98%;
+  --color-fd-secondary: 215 63% 14%;
+  --color-fd-secondary-foreground: 216 100% 98%;
+  --color-fd-accent: 215 63% 16%;
+  --color-fd-accent-foreground: 216 100% 98%;
+  --color-fd-ring: 215 100% 54%;
 }
 
 #nd-docs-layout,
 #nd-page {
-  --color-fd-background: 30 10% 5%;
+  --color-fd-background: 215 63% 6%;
 }
 
 .prose,
@@ -194,9 +177,9 @@ html.lenis body {
 }
 
 [data-rmiz-modal-overlay="visible"] {
-  background-color: rgba(11, 10, 9, 0.72) !important;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.55) !important;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 @media (prefers-reduced-motion: reduce) {

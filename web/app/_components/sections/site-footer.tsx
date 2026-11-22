@@ -5,76 +5,83 @@ import {
   IconBrandLinkedin,
   IconBrandWindows,
   IconBrandX,
-  IconHeartHandshake,
   IconMail,
 } from "@tabler/icons-react";
+import { Container } from "../ui/container";
 import { LifestoneLogo } from "../ui/lifestone-logo";
 import { SITE } from "../../_lib/site";
 
 const GROUPS = [
   {
-    heading: "Explore",
+    heading: "Product",
     links: [
-      { label: "Capabilities", href: "#capabilities" },
-      { label: "Open Translations", href: "#translations" },
-      { label: "Standard vs. Lite", href: "#download" },
-      { label: "Common Questions", href: "#faq" },
+      { label: "Features", href: "#features" },
+      { label: "Translations", href: "#translations" },
+      { label: "How it works", href: "#how-it-works" },
+      { label: "Pricing", href: "#pricing" },
     ],
   },
   {
     heading: "Resources",
     links: [
       { label: "Documentation", href: "/docs" },
-      { label: "Installation Guide", href: "/docs/getting-started/installation" },
+      { label: "Getting started", href: "/docs/getting-started/installation" },
       { label: "Latest Releases", href: SITE.repo.releasesLatest, external: true },
-      { label: "Community Discussions", href: SITE.repo.discussions, external: true },
+      { label: "Help center", href: SITE.repo.discussions, external: true },
+    ],
+  },
+  {
+    heading: "Socials",
+    links: [
+      { label: "GitHub", href: SITE.socials.github, external: true },
+      { label: "Email", href: SITE.socials.email },
+      { label: "X (Twitter)", href: SITE.socials.twitter, external: true },
+      { label: "LinkedIn", href: SITE.socials.linkedin, external: true },
     ],
   },
   {
     heading: "Open Lineage",
     links: [
-      { label: "Lifestone on GitHub", href: SITE.socials.github, external: true },
       { label: "Rhema by OpenBezal (MIT)", href: SITE.attribution.rhemaUrl, external: true },
       { label: "BibliaTodo (NTBT)", href: SITE.attribution.bibliatodoUrl, external: true },
-      { label: "Contact WHITE HORSE", href: SITE.socials.email },
+      { label: "FAQs", href: "#faq" },
+      { label: "Download", href: "#download" },
     ],
   },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background pt-16 pb-12 lg:pt-24 lg:pb-14">
-      <div className="mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] md:gap-8">
-          <div className="flex flex-col gap-4">
-            <LifestoneLogo showSub />
-            <p className="max-w-[320px] text-sm leading-relaxed text-muted-foreground">
-              Offline voice-to-scripture projection, 2,937 classic church hymns,
-              and 5 open-license Bible translations — anchored for every local
-              sanctuary.
+    <footer className="border-t border-border py-20 lg:py-[100px]">
+      <Container>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] md:gap-8">
+          <div className="flex flex-col gap-3">
+            <LifestoneLogo />
+            <p className="max-w-[290px] text-lg leading-6 tracking-[-0.01em] text-muted-foreground">
+              Offline AI Bible verse detection, 2,937 classic church hymns, and
+              5 open-license translations for every sanctuary.
             </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-background-elevated px-3 py-1 text-xs font-medium text-foreground">
-                <IconBrandWindows size={14} aria-hidden stroke={2} />
-                Windows (Standard &amp; Lite)
+            <div className="mt-2 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border-strong px-[14px] py-[6px] text-[15px] text-foreground">
+                <IconBrandWindows size={16} aria-hidden stroke={2} />
+                Windows
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-background-elevated px-3 py-1 text-xs font-medium text-foreground">
-                <IconBrandApple size={14} aria-hidden stroke={2} />
+              <span className="inline-flex items-center gap-2 rounded-full border border-border-strong px-[14px] py-[6px] text-[15px] text-foreground">
+                <IconBrandApple size={16} aria-hidden stroke={2} />
                 macOS
               </span>
             </div>
           </div>
-
           {GROUPS.map((g) => (
             <nav
               key={g.heading}
               aria-label={g.heading}
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-[10px]"
             >
-              <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+              <h4 className="text-[15px] leading-6 text-foreground">
                 {g.heading}
               </h4>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-[10px]">
                 {g.links.map((l) => (
                   <li key={l.label}>
                     <FooterLink
@@ -90,56 +97,41 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Respectful Open-Source Attribution Card */}
-        <div className="mt-12 rounded-2xl border border-border bg-background-elevated/70 px-5 py-4">
-          <div className="flex flex-col gap-2 text-xs leading-relaxed text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p className="flex items-start gap-2 sm:items-center">
-              <IconHeartHandshake
-                size={16}
-                className="mt-0.5 sm:mt-0 shrink-0 text-accent"
-              />
-              <span>
-                Built with gratitude on{" "}
-                <a
-                  href={SITE.attribution.rhemaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-accent-gold underline underline-offset-4 hover:text-accent"
-                >
-                  {SITE.attribution.rhemaName}
-                </a>{" "}
-                ({SITE.attribution.rhemaCopyright}, MIT License). Spanish NTBT
-                provided free of charge by{" "}
-                <a
-                  href={SITE.attribution.bibliatodoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-foreground underline underline-offset-4 hover:text-accent-gold"
-                >
-                  {SITE.attribution.bibliatodoName}
-                </a>
-                .
-              </span>
-            </p>
-            <span className="shrink-0 font-mono text-[11px] text-subtle-foreground">
-              MIT License
-            </span>
-          </div>
+        {/* Respectful MIT & Scripture Attribution Bar */}
+        <div className="mt-12 rounded-xl border border-border bg-surface px-5 py-4 text-xs leading-relaxed text-muted-foreground">
+          Built with gratitude on{" "}
+          <a
+            href={SITE.attribution.rhemaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-cyan underline underline-offset-4 hover:text-foreground transition-colors"
+          >
+            {SITE.attribution.rhemaName}
+          </a>{" "}
+          ({SITE.attribution.rhemaCopyright}, MIT License). Spanish NTBT
+          provided free of charge by{" "}
+          <a
+            href={SITE.attribution.bibliatodoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground underline underline-offset-4 hover:text-accent-cyan transition-colors"
+          >
+            {SITE.attribution.bibliatodoName}
+          </a>
+          .
         </div>
 
-        {/* Bottom Copyright & Socials */}
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-subtle-foreground sm:flex-row sm:items-center">
-          <p>
-            © {new Date().getFullYear()} {SITE.legalName} media · Lifestone.
-            Free and open source for the Body of Christ.
-          </p>
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 text-[13px] leading-5 text-subtle-foreground md:flex-row md:items-center">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <p>© {new Date().getFullYear()} {SITE.legalName} media · Lifestone. Free &amp; MIT Open Source.</p>
+          </div>
           <div className="flex items-center gap-4">
             <a
               href={SITE.socials.github}
               aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent-gold"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               <IconBrandGithub size={18} stroke={2} />
             </a>
@@ -148,7 +140,7 @@ export function SiteFooter() {
               aria-label="X (Twitter)"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent-gold"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               <IconBrandX size={18} stroke={2} />
             </a>
@@ -157,20 +149,20 @@ export function SiteFooter() {
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-accent-gold"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               <IconBrandLinkedin size={18} stroke={2} />
             </a>
             <a
               href={SITE.socials.email}
               aria-label="Email"
-              className="text-muted-foreground transition-colors hover:text-accent-gold"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               <IconMail size={18} stroke={2} />
             </a>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
@@ -185,7 +177,7 @@ function FooterLink({
   children: React.ReactNode;
 }) {
   const className =
-    "text-sm text-muted-foreground transition-colors hover:text-accent-gold";
+    "text-[15px] leading-6 text-muted-foreground transition-colors hover:text-foreground";
   if (external || /^https?:|^mailto:/.test(href)) {
     return (
       <a

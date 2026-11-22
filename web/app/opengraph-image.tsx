@@ -21,8 +21,8 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(65% 55% at 75% 10%, rgba(228,180,76,0.22) 0%, rgba(217,119,54,0.08) 42%, transparent 72%), #0B0A09",
-          color: "#F5EFE6",
+            "radial-gradient(60% 50% at 50% 0%, rgba(25,215,255,0.20) 0%, rgba(22,119,255,0.08) 40%, transparent 70%), #07111F",
+          color: "#F7FAFF",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -35,52 +35,64 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            color: "rgba(245,239,230,0.68)",
-            fontSize: 24,
-            letterSpacing: "0.02em",
+            color: "rgba(247,250,255,0.7)",
+            fontSize: 28,
+            letterSpacing: "-0.02em",
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconDataUrl}
-            width={52}
-            height={52}
+            width={56}
+            height={56}
             alt=""
             style={{ borderRadius: 12, display: "block" }}
           />
-          <span style={{ color: "#E4B44C", fontWeight: 700 }}>LIFESTONE</span>
+          <span style={{ color: "#F4C95D", fontWeight: 600 }}>WHITE HORSE</span>
           <span>·</span>
-          <span>by WHITE HORSE</span>
+          <span>lifestone-church-ai.vercel.app</span>
         </div>
 
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 18,
-            maxWidth: 1020,
+            gap: 20,
+            maxWidth: 1000,
           }}
         >
           <div
             style={{
-              fontSize: 74,
-              lineHeight: 1.04,
-              letterSpacing: "-0.03em",
-              fontWeight: 700,
-              color: "#F5EFE6",
+              fontSize: 88,
+              lineHeight: 1.02,
+              letterSpacing: "-0.05em",
+              fontWeight: 600,
+              color: "#F7FAFF",
             }}
           >
-            Living Scripture, Anchored for Every Sanctuary.
+            LIFESTONE
           </div>
           <div
             style={{
-              fontSize: 28,
-              lineHeight: 1.4,
-              color: "rgba(245,239,230,0.72)",
-              maxWidth: 920,
+              fontSize: 48,
+              lineHeight: 1.12,
+              letterSpacing: "-0.03em",
+              fontWeight: 500,
+              color: "#19D7FF",
             }}
           >
-            Offline AI voice-to-verse projection · 5 open Bible translations · 2,937 hymns · HDMI &amp; NDI broadcast ready.
+            {SITE.tagline}
+          </div>
+          <div
+            style={{
+              fontSize: 26,
+              lineHeight: 1.4,
+              color: "rgba(247,250,255,0.7)",
+              maxWidth: 920,
+              marginTop: 8,
+            }}
+          >
+            5 open-license Bible translations · 2,937 offline church hymns · Plug-and-play HDMI &amp; NDI broadcast output.
           </div>
         </div>
 
@@ -89,39 +101,36 @@ export default async function Image() {
             display: "flex",
             gap: 12,
             alignItems: "center",
-            color: "#F3D382",
-            fontSize: 21,
+            color: "rgba(247,250,255,0.72)",
+            fontSize: 22,
           }}
         >
           <span
             style={{
-              padding: "8px 18px",
+              padding: "8px 16px",
               borderRadius: 999,
-              border: "1px solid rgba(228,180,76,0.35)",
-              background: "rgba(228,180,76,0.1)",
+              border: "1px solid rgba(25,215,255,0.35)",
             }}
           >
             100% Offline AI
           </span>
           <span
             style={{
-              padding: "8px 18px",
+              padding: "8px 16px",
               borderRadius: 999,
-              border: "1px solid rgba(245,239,230,0.16)",
-              color: "rgba(245,239,230,0.8)",
+              border: "1px solid rgba(255,255,255,0.18)",
             }}
           >
             2,937 Hymns
           </span>
           <span
             style={{
-              padding: "8px 18px",
+              padding: "8px 16px",
               borderRadius: 999,
-              border: "1px solid rgba(245,239,230,0.16)",
-              color: "rgba(245,239,230,0.8)",
+              border: "1px solid rgba(255,255,255,0.18)",
             }}
           >
-            Free &amp; MIT Open Source
+            Windows · macOS · MIT Open Source
           </span>
         </div>
       </div>
