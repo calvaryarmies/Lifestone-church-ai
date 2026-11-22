@@ -235,7 +235,7 @@ export function DownloadButton({
             onClick={() => setShowMobileModal(false)}
           >
             <div
-              className="relative w-full max-w-sm sm:max-w-md rounded-2xl border border-border-strong bg-surface p-6 shadow-2xl text-left"
+              className="relative w-full max-w-sm sm:max-w-md rounded-2xl border border-border-strong bg-background-elevated p-6 shadow-2xl text-left"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -255,25 +255,25 @@ export function DownloadButton({
                   <h3 id="mobile-modal-title" className="text-base font-semibold text-foreground">
                     Desktop Church Software
                   </h3>
-                  <p className="text-xs text-accent-gold font-medium">Lifestone {version} • Windows & macOS</p>
+                  <p className="text-xs text-accent-gold font-medium">Lifestone {version} • Windows &amp; macOS</p>
                 </div>
               </div>
 
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                Lifestone is presentation software designed for <strong>desktop computers (Windows & Mac)</strong> to control church projectors, HDMI screens, and live streams with offline speech AI.
+                Lifestone is presentation software designed for <strong>desktop computers (Windows &amp; Mac)</strong> to drive church projectors, HDMI screens, and live streams with offline speech AI.
               </p>
 
               <div className="rounded-xl border border-border bg-surface-strong/70 p-3.5 mb-5 text-xs text-foreground/90 space-y-2">
                 <div className="flex items-start gap-2">
-                  <span className="text-accent-cyan text-base">💻</span>
+                  <span className="text-accent text-base">💻</span>
                   <span>
-                    <strong>Use your PC:</strong> Please open this website on your Windows or Mac PC to download your version.
+                    <strong>Open on your PC:</strong> Visit this link on your Windows or Mac booth computer to download your edition.
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-emerald-400 text-base">⚡</span>
+                  <span className="text-accent-live text-base">⚡</span>
                   <span>
-                    <strong>Two Editions Ready:</strong> Standard (for Core i3/i5/i7 & Ryzen) and Lite (for Intel Pentium & Celeron budget PCs).
+                    <strong>Two Editions Ready:</strong> Standard (~330 MB GPU/Core/Ryzen with dual Whisper AI) and Lite (~114 MB for Pentium &amp; Celeron PCs).
                   </span>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export function DownloadButton({
                 <button
                   type="button"
                   onClick={handleCopyLink}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-white/90 transition-colors cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-accent-gold transition-colors cursor-pointer"
                 >
                   {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
                   <span>{copied ? "Link Copied!" : "Copy Website Link"}</span>
@@ -302,33 +302,38 @@ export function DownloadButton({
     );
   }
 
-  return (
-    <div className="flex flex-col items-center gap-3 w-full">
-      <Button
-        href={downloadUrl}
-        target="_self"
-        download=""
-        variant="primary"
-        size={size}
-        className={className}
-        onClick={handleStandardDownloadClick}
-      >
-        {downloading ? (
-          <>
-            <IconCheck size={16} className="animate-in zoom-in" stroke={2.5} />
-            <span>Starting download...</span>
-          </>
-        ) : (
-          <>
-            {showIcon && <Icon size={16} aria-hidden stroke={2} />}
-            <span suppressHydrationWarning>{text}</span>
-          </>
-        )}
-      </Button>
-
-      {showCompatibilityNotice && activePlatform === "windows" && (
-        <WindowsCompatibilityNotice />
+  const buttonEl = (
+    <Button
+      href={downloadUrl}
+      target="_self"
+      download=""
+      variant="primary"
+      size={size}
+      className={className}
+      onClick={handleStandardDownloadClick}
+    >
+      {downloading ? (
+        <>
+          <IconCheck size={16} className="animate-in zoom-in" stroke={2.5} />
+          <span>Starting download...</span>
+        </>
+      ) : (
+        <>
+          {showIcon && <Icon size={16} aria-hidden stroke={2} />}
+          <span suppressHydrationWarning>{text}</span>
+        </>
       )}
+    </Button>
+  );
+
+  if (!showCompatibilityNotice || activePlatform !== "windows") {
+    return buttonEl;
+  }
+
+  return (
+    <div className="flex flex-col items-start gap-3 w-full">
+      {buttonEl}
+      <WindowsCompatibilityNotice />
     </div>
   );
 }
@@ -405,52 +410,49 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
     <>
       <div
         className={cn(
-          "relative w-full max-w-2xl mx-auto rounded-2xl border border-white/10 bg-gradient-to-r from-accent/10 via-surface-strong/60 to-accent-cyan/10 backdrop-blur-xl p-3 sm:px-5 sm:py-3.5 shadow-xl shadow-cyan-950/20 transition-all duration-300 hover:border-accent-cyan/40 hover:shadow-cyan-950/40 text-left",
+          "relative w-full rounded-2xl border border-border-strong bg-background-elevated/90 backdrop-blur-xl p-3.5 sm:px-4 sm:py-3.5 shadow-xl shadow-black/40 transition-all duration-300 hover:border-accent/35 text-left",
           className
         )}
       >
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           {/* Left: Info & Processor Tag */}
-          <div className="flex items-center gap-3 text-left w-full sm:w-auto">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-cyan/15 border border-accent-cyan/30 text-accent-cyan shadow-sm shadow-accent-cyan/20">
+          <div className="flex min-w-0 items-center gap-3 text-left">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent-cyan/12 border border-accent-cyan/30 text-accent-cyan">
               <IconFeather size={18} />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs sm:text-sm font-semibold text-foreground tracking-tight">
-                  Budget laptop?
+                  Older or budget church PC?
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/30 px-2 py-0.5 text-[10px] font-bold text-accent-cyan uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1 rounded-full bg-accent-cyan/12 border border-accent-cyan/30 px-2 py-0.5 text-[10px] font-mono font-semibold text-accent-cyan uppercase tracking-wider">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan animate-pulse" />
                   Pentium / Celeron
                 </span>
               </div>
               <p className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">
-                Lightweight SSE4 build • Safe graphics mode • Zero lag
+                Lifestone Lite (~114 MB) • Safe SSE4 build • Zero AVX crashes
               </p>
             </div>
           </div>
 
           {/* Right: Actions */}
-          <div className="flex items-center justify-end gap-2 sm:gap-2.5 w-full sm:w-auto shrink-0">
+          <div className="flex flex-wrap items-center justify-start sm:justify-end gap-2 w-full sm:w-auto shrink-0">
             <button
               type="button"
               onClick={handleLiteDownloadClick}
-              className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-cyan via-sky-500 to-blue-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="group relative inline-flex items-center justify-center gap-1.5 rounded-full border border-accent-cyan/40 bg-accent-cyan/15 hover:bg-accent-cyan/25 px-3.5 py-2 text-xs font-semibold text-foreground transition-all duration-200 cursor-pointer"
               aria-label="Download Lifestone Lite Edition for Windows"
             >
               {downloadingLite ? (
                 <>
-                  <IconCheck size={16} className="text-white animate-in zoom-in" stroke={2.5} />
-                  <span>Downloading...</span>
+                  <IconCheck size={15} className="text-accent-live" stroke={2.5} />
+                  <span>Starting...</span>
                 </>
               ) : (
                 <>
-                  <IconDownload size={15} className="text-white group-hover:-translate-y-0.5 transition-transform" />
+                  <IconDownload size={14} className="text-accent-cyan group-hover:-translate-y-0.5 transition-transform" />
                   <span>Download Lite</span>
-                  <span className="hidden xs:inline-block rounded bg-black/25 px-1.5 py-0.2 text-[10px] font-mono text-white/90">
-                    {version}
-                  </span>
                 </>
               )}
             </button>
@@ -458,12 +460,11 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
             <button
               type="button"
               onClick={() => setShowGuideModal(true)}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 hover:border-accent-gold/40 bg-white/5 hover:bg-accent-gold/10 px-3 py-2 text-xs sm:text-sm font-medium text-accent-gold transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border-strong hover:border-accent/40 bg-surface hover:bg-accent/10 px-3 py-2 text-xs font-medium text-accent-gold transition-all duration-200 cursor-pointer"
               aria-label="Which Lifestone version do I need?"
             >
-              <IconHelpCircle size={15} />
-              <span className="hidden sm:inline">Which version?</span>
-              <span className="sm:hidden">Help</span>
+              <IconHelpCircle size={14} />
+              <span>Compare</span>
             </button>
           </div>
         </div>
@@ -478,7 +479,7 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
           onClick={() => setShowGuideModal(false)}
         >
           <div
-            className="relative w-full max-w-xl rounded-2xl border border-border-strong bg-surface p-6 sm:p-8 shadow-2xl text-left overflow-y-auto max-h-[90vh]"
+            className="relative w-full max-w-xl rounded-2xl border border-border-strong bg-background-elevated p-6 sm:p-8 shadow-2xl text-left overflow-y-auto max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -495,33 +496,38 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
                 <IconCpu size={22} />
               </div>
               <div>
-                <h3 id="guide-modal-title" className="text-lg font-semibold text-foreground">
-                  Choosing the Right Lifestone Edition
+                <h3 id="guide-modal-title" className="font-display text-xl font-semibold text-foreground">
+                  Choosing Your Lifestone Edition
                 </h3>
-                <p className="text-xs text-accent-gold font-medium">Both versions include all 31,102 verses & are 100% offline</p>
+                <p className="text-xs text-accent-gold font-medium">
+                  Both editions ship 5 open Bible translations, 2,937 hymns &amp; HDMI auto-detect — 100% offline
+                </p>
               </div>
             </div>
 
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-              To guarantee that Lifestone starts instantly and runs smoothly without lag on every church computer, we provide two specialized Windows builds:
+              Every church computer deserves rock-solid Sunday reliability. Pick the build engineered for your booth hardware:
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               {/* Standard Edition Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-strong/60 p-4 relative">
+              <div className="flex flex-col justify-between rounded-xl border border-accent/35 bg-accent/[0.06] p-4 relative">
+                <span className="absolute -top-2.5 right-3 bg-accent text-[10px] font-mono font-bold text-primary-foreground px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  Recommended
+                </span>
                 <div>
-                  <div className="flex items-center gap-2 mb-2 text-primary">
+                  <div className="flex items-center gap-2 mb-2 text-accent-gold">
                     <IconBolt size={18} />
-                    <span className="font-semibold text-sm">Standard Edition</span>
+                    <span className="font-semibold text-sm">Standard (~330 MB)</span>
                   </div>
                   <p className="text-xs font-medium text-foreground mb-2">
-                    For Modern Core & Ryzen PCs
+                    Modern Core, Ryzen &amp; GPU PCs
                   </p>
                   <ul className="text-xs text-muted-foreground space-y-1.5 mb-4">
-                    <li>• Intel Core i3 / i5 / i7 / i9 (4th gen+)</li>
-                    <li>• AMD Ryzen (all series)</li>
-                    <li>• Dual Whisper AI (Base + Tiny)</li>
+                    <li>• Intel Core i3/i5/i7/i9 (4th gen+) &amp; Ryzen</li>
+                    <li>• Heavy Dual Whisper AI (Base + Tiny)</li>
                     <li>• AVX2 vector acceleration</li>
+                    <li>• Full NDI, OBS, vMix &amp; HDMI output</li>
                   </ul>
                 </div>
                 <button
@@ -530,31 +536,31 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
                     triggerDirectDownload(standardUrl);
                     setShowGuideModal(false);
                   }}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground hover:bg-white/90 transition-colors cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-3 py-2 text-xs font-semibold text-primary-foreground hover:bg-accent-gold transition-colors cursor-pointer"
                 >
                   <IconDownload size={14} />
-                  <span>Download Standard</span>
+                  <span>Download Standard ({version})</span>
                 </button>
               </div>
 
               {/* Lite Edition Card */}
-              <div className="flex flex-col justify-between rounded-xl border border-accent-cyan/40 bg-accent-cyan/5 p-4 relative">
-                <span className="absolute -top-2.5 right-3 bg-accent-cyan text-[10px] font-bold text-background px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  Universal Safe
+              <div className="flex flex-col justify-between rounded-xl border border-accent-cyan/35 bg-accent-cyan/[0.06] p-4 relative">
+                <span className="absolute -top-2.5 right-3 bg-accent-cyan text-[10px] font-mono font-bold text-background px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  Budget PC Safe
                 </span>
                 <div>
                   <div className="flex items-center gap-2 mb-2 text-accent-cyan">
                     <IconFeather size={18} />
-                    <span className="font-semibold text-sm">Lite / Compatibility</span>
+                    <span className="font-semibold text-sm">Lite (~114 MB)</span>
                   </div>
                   <p className="text-xs font-medium text-foreground mb-2">
-                    For Budget & Older Laptops
+                    Pentium, Celeron &amp; Older Laptops
                   </p>
                   <ul className="text-xs text-muted-foreground space-y-1.5 mb-4">
-                    <li>• Intel Pentium (N3530, Gold, Silver)</li>
+                    <li>• Intel Pentium (N3530, Silver, Gold)</li>
                     <li>• Intel Celeron, Atom, Core 2 Duo</li>
-                    <li>• Pure SSE4 build (No AVX crashes)</li>
-                    <li>• Safe GPU mode, &lt; 150 MB RAM</li>
+                    <li>• Pure SSE4 build (zero AVX crashes)</li>
+                    <li>• Safe graphics mode, &lt;150 MB RAM</li>
                   </ul>
                 </div>
                 <button
@@ -563,26 +569,26 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
                     triggerDirectDownload(liteUrl);
                     setShowGuideModal(false);
                   }}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent-cyan to-blue-600 px-3 py-2 text-xs font-semibold text-white hover:brightness-110 transition-all cursor-pointer shadow-md shadow-cyan-500/20"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-accent-cyan/40 bg-accent-cyan/20 hover:bg-accent-cyan/30 px-3 py-2 text-xs font-semibold text-foreground transition-all cursor-pointer"
                 >
                   <IconDownload size={14} />
-                  <span>Download Lite</span>
+                  <span>Download Lite ({version})</span>
                 </button>
               </div>
             </div>
 
             {/* How to check section */}
-            <div className="rounded-xl border border-border bg-surface-strong/70 p-4 text-xs space-y-2 mb-6">
+            <div className="rounded-xl border border-border bg-surface-strong/60 p-4 text-xs space-y-2 mb-6">
               <p className="font-semibold text-foreground flex items-center gap-1.5">
                 <span>🔍</span>
-                <span>How to check your PC in 10 seconds:</span>
+                <span>Check your Windows processor in 10 seconds:</span>
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Open Windows <strong>Settings</strong> (or press <strong>Win + I</strong>) → <strong>System</strong> → <strong>About</strong>. Look at your <strong>Processor</strong> line:
+                Press <strong>Win + I</strong> → <strong>System</strong> → <strong>About</strong> and look at the <strong>Processor</strong> line:
               </p>
-              <div className="rounded-lg bg-black/40 p-2.5 font-mono text-[11px] text-foreground/90 border border-border space-y-1">
+              <div className="rounded-lg bg-black/50 p-2.5 font-mono text-[11px] text-foreground/90 border border-border space-y-1">
                 <p>Processor: <span className="text-accent-cyan">Intel(R) Pentium(R) CPU N3530...</span> → <strong className="text-accent-cyan">Choose Lite</strong></p>
-                <p>Processor: <span className="text-primary">Intel(R) Core(TM) i5-1135G7...</span> → <strong className="text-primary">Choose Standard</strong></p>
+                <p>Processor: <span className="text-accent-gold">Intel(R) Core(TM) i5 / Ryzen 5...</span> → <strong className="text-accent-gold">Choose Standard</strong></p>
               </div>
             </div>
 
@@ -590,7 +596,7 @@ export function WindowsCompatibilityNotice({ className }: { className?: string }
               <button
                 type="button"
                 onClick={() => setShowGuideModal(false)}
-                className="rounded-xl border border-border-strong px-5 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors cursor-pointer"
+                className="rounded-full border border-border-strong px-5 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors cursor-pointer"
               >
                 Close
               </button>

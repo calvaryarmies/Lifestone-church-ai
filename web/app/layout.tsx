@@ -1,8 +1,28 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import "./globals.css";
 import { SITE } from "./_lib/site";
 import { StructuredData } from "./_components/seo/structured-data";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["SOFT", "WONK"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
 
 const TITLE = `${SITE.name} — ${SITE.tagline}`;
 const OG_TITLE = TITLE;
@@ -18,21 +38,18 @@ export const metadata: Metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   keywords: [
-    "Bible verse detection",
+    "Lifestone",
+    "church presentation software",
+    "offline Bible projection",
+    "AI Bible verse detection",
     "real-time scripture overlay",
-    "sermon transcription",
-    "church broadcast software",
-    "NDI overlay",
-    "live scripture display",
-    "church media",
-    "AI Bible verse finder",
-    "sermon AI",
-    "live sermon scripture",
+    "church hymnal software",
+    "HDMI church projector",
+    "NDI scripture overlay",
     "OBS scripture overlay",
     "vMix scripture overlay",
-    "church livestream tools",
-    "speech-to-scripture",
-    "Lifestone",
+    "Spanish NTBT Bible software",
+    "free open source church media",
   ],
   authors: [{ name: SITE.legalName, url: SITE.repo.url }],
   creator: SITE.legalName,
@@ -72,13 +89,11 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // icon and apple-icon are wired automatically from app/icon.svg and
-  // app/apple-icon.tsx — overriding here would suppress Next.js's defaults.
   manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0B0A09",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -90,7 +105,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="dark h-full antialiased"
+      className={`dark h-full antialiased ${fraunces.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
       data-theme="dark"
       suppressHydrationWarning
     >

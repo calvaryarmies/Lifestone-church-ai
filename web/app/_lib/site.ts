@@ -1,14 +1,14 @@
 export const SITE = {
   name: "Lifestone",
   legalName: "WHITE HORSE",
-  tagline: "AI Bible Verse Detection & Scripture Projection for Churches",
+  tagline: "Offline Voice-to-Scripture & Sanctuary Projection for Every Church",
   shortDescription:
-    "Lifestone is free, open-source church presentation software that listens to live sermons, detects Bible verses in real time, and displays Scripture automatically through HDMI, NDI, OBS, and vMix.",
+    "Lifestone is free, open-source church presentation software with offline AI Bible detection, 2,937 built-in hymns, 5 open-license Bible translations, and plug-and-play HDMI & NDI projection.",
   description:
-    "Lifestone is free, open-source church presentation software that listens to live sermons, detects Bible verses in real time, and displays Scripture automatically through HDMI, NDI, OBS, and vMix.",
+    "Lifestone listens to live sermons completely offline, projects Bible verses across 5 open-license translations (KJV, Spanish NTBT, SpaRV, FreJND, PorBLivre), bundles 2,937 classic church hymns, and outputs cleanly to HDMI projectors, NDI, OBS, and vMix.",
   url: "https://lifestone-church-ai.vercel.app",
   locale: "en_US",
-  twitterHandle: "@whitehorse",
+  twitterHandle: "@calvaryarmies",
   founded: "2026",
   category: "ChurchSoftware",
   operatingSystems: ["Windows", "macOS"],
@@ -16,9 +16,18 @@ export const SITE = {
     owner: "calvaryarmies",
     name: "Lifestone-church-ai",
     url: "https://github.com/calvaryarmies/Lifestone-church-ai",
-    releasesLatest: "https://github.com/calvaryarmies/Lifestone-church-ai/releases/latest",
-    discussions: "https://github.com/calvaryarmies/Lifestone-church-ai/discussions",
+    releasesLatest:
+      "https://github.com/calvaryarmies/Lifestone-church-ai/releases/latest",
+    discussions:
+      "https://github.com/calvaryarmies/Lifestone-church-ai/discussions",
     stars: { fallback: 221 },
+  },
+  attribution: {
+    rhemaName: "Rhema by OpenBezal",
+    rhemaUrl: "https://github.com/openbezal/rhema",
+    rhemaCopyright: "Copyright (c) 2025 OpenBezal",
+    bibliatodoName: "BibliaTodo Bible Society",
+    bibliatodoUrl: "https://www.bibliatodo.com",
   },
   socials: {
     github: "https://github.com/calvaryarmies/Lifestone-church-ai",
@@ -27,8 +36,9 @@ export const SITE = {
     email: "mailto:calvaryarmies@gmail.com",
   },
   stats: {
-    languages: "2+",
-    translations: "11+",
+    languages: "4",
+    translations: "5 Open",
+    hymns: "2,937",
   },
 } as const;
 

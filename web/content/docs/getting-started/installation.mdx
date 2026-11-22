@@ -57,10 +57,9 @@ runs seven phases in this exact order:
    dependencies (`optimum-onnx[onnxruntime]`,
    `sentence-transformers`, `accelerate`, `tokenizers`, `numpy`,
    `torch`, `meaningless`).
-2. **Bible source data** — downloads a single bundled archive that
-   contains all ten translations (KJV, NIV, ESV, NASB, NKJV, NLT,
-   AMP, SpaRV, FreJND, PorBLivre) plus the cross-reference dataset
-   from openbible.info.
+2. **Bible source data** — prepares the bundled open-license translations
+   (`KJV`, `SpaRV`, `FreJND`, `PorBLivre`, and Spanish `NTBT`) plus the
+   cross-reference dataset from openbible.info.
 3. **SQLite database** — assembles `data/lifestone.db` with FTS5
    virtual tables and cross-reference tables.
 4. **ONNX model** — downloads `Qwen3/Qwen3-Embedding-0.6B`, exports

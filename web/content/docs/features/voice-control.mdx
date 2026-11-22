@@ -19,16 +19,15 @@ sermon transcript — there's no wake word and no separate listening mode.
 The translation switcher activates whenever the detector hears one of
 these patterns:
 
-- "read in **NIV**" / "switch to **NIV**"
-- "read in **ESV**" / "switch to **ESV**"
-- "read in **NASB**" / "switch to **NASB**"
-- "read in **NKJV**" / "switch to **NKJV**"
-- "read in **NLT**" / "switch to **NLT**"
-- "read in **KJV**" / "switch to **KJV**"
-- "read in **Amplified**" / "switch to **Amplified**" → AMP
-- "read in **Spanish**" / "read in **Reina Valera**" → SpaRV
-- "read in **French**" → FreJND
-- "read in **Portuguese**" → PorBLivre
+- "read in **KJV**" / "switch to **King James**" → `KJV`
+- "read in **Spanish**" / "read in **Reina Valera**" → `SpaRV`
+- "read in **NTBT**" / "read in **BibliaTodo**" → `NTBT`
+- "read in **French**" → `FreJND`
+- "read in **Portuguese**" → `PorBLivre`
+
+If a pastor requests a copyrighted translation (such as NIV or ESV) in a public
+open-license build, Lifestone gracefully keeps the current active translation
+on screen and shows a non-disruptive notice instead of failing.
 
 Patterns are case-insensitive. Once recognized, the active translation
 flips immediately and the live overlay reflows. The full alias table

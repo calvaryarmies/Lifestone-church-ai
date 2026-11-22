@@ -21,8 +21,8 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           background:
-            "radial-gradient(60% 50% at 50% 0%, rgba(25,215,255,0.20) 0%, rgba(22,119,255,0.08) 40%, transparent 70%), #07111F",
-          color: "#F7FAFF",
+            "radial-gradient(65% 55% at 75% 10%, rgba(228,180,76,0.22) 0%, rgba(217,119,54,0.08) 42%, transparent 72%), #0B0A09",
+          color: "#F5EFE6",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -35,64 +35,52 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             gap: 16,
-            color: "rgba(247,250,255,0.7)",
-            fontSize: 28,
-            letterSpacing: "-0.02em",
+            color: "rgba(245,239,230,0.68)",
+            fontSize: 24,
+            letterSpacing: "0.02em",
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={iconDataUrl}
-            width={56}
-            height={56}
+            width={52}
+            height={52}
             alt=""
             style={{ borderRadius: 12, display: "block" }}
           />
-          <span style={{ color: "#F7FAFF", fontWeight: 600 }}>WHITE HORSE</span>
+          <span style={{ color: "#E4B44C", fontWeight: 700 }}>LIFESTONE</span>
           <span>·</span>
-          <span>lifestone.whitehorse.com</span>
+          <span>by WHITE HORSE</span>
         </div>
 
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 20,
-            maxWidth: 1000,
+            gap: 18,
+            maxWidth: 1020,
           }}
         >
           <div
             style={{
-              fontSize: 88,
-              lineHeight: 1.02,
-              letterSpacing: "-0.05em",
-              fontWeight: 600,
-              color: "#F7FAFF",
-            }}
-          >
-            LIFESTONE
-          </div>
-          <div
-            style={{
-              fontSize: 56,
-              lineHeight: 1.1,
+              fontSize: 74,
+              lineHeight: 1.04,
               letterSpacing: "-0.03em",
-              fontWeight: 500,
-              color: "#19D7FF",
+              fontWeight: 700,
+              color: "#F5EFE6",
             }}
           >
-            {SITE.tagline}
+            Living Scripture, Anchored for Every Sanctuary.
           </div>
           <div
             style={{
               fontSize: 28,
               lineHeight: 1.4,
-              color: "rgba(247,250,255,0.7)",
-              maxWidth: 880,
-              marginTop: 12,
+              color: "rgba(245,239,230,0.72)",
+              maxWidth: 920,
             }}
           >
-            {SITE.shortDescription}
+            Offline AI voice-to-verse projection · 5 open Bible translations · 2,937 hymns · HDMI &amp; NDI broadcast ready.
           </div>
         </div>
 
@@ -101,36 +89,39 @@ export default async function Image() {
             display: "flex",
             gap: 12,
             alignItems: "center",
-            color: "rgba(247,250,255,0.6)",
-            fontSize: 22,
+            color: "#F3D382",
+            fontSize: 21,
           }}
         >
           <span
             style={{
-              padding: "8px 16px",
+              padding: "8px 18px",
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.18)",
+              border: "1px solid rgba(228,180,76,0.35)",
+              background: "rgba(228,180,76,0.1)",
             }}
           >
-            Windows · macOS
+            100% Offline AI
           </span>
           <span
             style={{
-              padding: "8px 16px",
+              padding: "8px 18px",
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.18)",
+              border: "1px solid rgba(245,239,230,0.16)",
+              color: "rgba(245,239,230,0.8)",
             }}
           >
-            Local AI
+            2,937 Hymns
           </span>
           <span
             style={{
-              padding: "8px 16px",
+              padding: "8px 18px",
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.18)",
+              border: "1px solid rgba(245,239,230,0.16)",
+              color: "rgba(245,239,230,0.8)",
             }}
           >
-            Broadcast Ready
+            Free &amp; MIT Open Source
           </span>
         </div>
       </div>

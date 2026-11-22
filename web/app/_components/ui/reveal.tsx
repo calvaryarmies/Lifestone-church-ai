@@ -23,7 +23,7 @@ function getObserver() {
         }
       }
     },
-    { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    { threshold: 0.01, rootMargin: "0px 0px 80px 0px" }
   );
   return sharedObserver;
 }
@@ -45,6 +45,11 @@ export function Reveal({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 80) {
+      queueMicrotask(() => setVisible(true));
+      return;
+    }
     const observer = getObserver();
     if (!observer) {
       queueMicrotask(() => setVisible(true));

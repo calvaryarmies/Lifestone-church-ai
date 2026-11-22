@@ -1,39 +1,30 @@
 ---
 title: Bible Translations
-description: Ten bundled translations across four languages, served from a single SQLite database with FTS5 full-text search.
+description: Five open and freely licensed translations bundled offline across four languages, served from a single SQLite database with FTS5 full-text search.
 icon: BookOpen
 ---
 
 import { Callout } from "fumadocs-ui/components/callout";
 
-Lifestone ships with ten Bible translations spanning English, Spanish, French,
-and Portuguese. They're stored in a single SQLite database (`data/lifestone.db`)
-with FTS5 virtual tables for fast text search.
+Public Lifestone builds ship with **five open and freely licensed Bible
+translations** spanning English, Spanish, French, and Portuguese. They're stored
+in a single SQLite database (`data/lifestone.db`) with FTS5 virtual tables for
+fast offline text search.
 
-## Bundled translations
+## Bundled public translations
 
-The list comes verbatim from `data/download-sources.ts` —
-`EXPECTED_TRANSLATIONS` enumerates the JSON files that `setup:all`
-expects under `data/sources/`:
+| ID | Code | Translation | Language | License |
+| --- | --- | --- | --- | --- |
+| `1` | `KJV` | King James Version | English | Public Domain |
+| `8` | `SpaRV` | Reina-Valera 1909 | Spanish | Public Domain |
+| `9` | `FreJND` | J.N. Darby 1885 | French | Public Domain |
+| `10` | `PorBLivre` | Bíblia Livre | Portuguese | Public Domain |
+| `11` | `NTBT` | Nueva Traducción BibliaTodo | Spanish | BibliaTodo Free Use Agreement (v1.7) |
 
-| File | Translation | Language |
-| --- | --- | --- |
-| `KJV.json` | King James Version | English |
-| `NIV.json` | New International Version | English |
-| `ESV.json` | English Standard Version | English |
-| `NASB.json` | New American Standard Bible | English |
-| `NKJV.json` | New King James Version | English |
-| `NLT.json` | New Living Translation | English |
-| `AMP.json` | Amplified Bible | English |
-| `SpaRV.json` | Reina-Valera | Spanish |
-| `FreJND.json` | Darby (French) | French |
-| `PorBLivre.json` | Almeida Livre | Portuguese |
-
-<Callout title="How they're delivered" type="info">
-All ten translations come from a single bundled archive that
-`download-sources.ts` fetches during phase 2 of `setup:all`. There's
-no separate BibleGateway phase — earlier copy was wrong about that.
-The cross-reference dataset is fetched in the same phase from
+<Callout title="Offline storage & cross-references" type="info">
+All bundled translations live locally inside `data/lifestone.db` with FTS5
+full-text search so every passage loads instantaneously with no internet
+connection required. Cross-references are imported from
 [openbible.info](https://openbible.info).
 </Callout>
 
@@ -55,9 +46,8 @@ of them for broadcast.
 The active translation is the one rendered on the broadcast overlay. You
 can change it three ways:
 
-1. **Voice command** — "read in NIV", "switch to ESV", and so on. See
-   [Voice control](/docs/features/voice-control) for the full alias
-   table.
+1. **Voice command** — "read in KJV", "switch to Spanish", "read in French", and so on. See
+   [Voice control](/docs/features/voice-control) for details. If a speaker asks for a translation not bundled in the public edition, Lifestone stays cleanly on the current translation and shows a gentle notification.
 2. **UI control** — the translation picker in the transport bar.
 3. **Remote control** — OSC, HTTP, or a Stream Deck button. See
    [Remote control](/docs/features/remote-control).
